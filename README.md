@@ -19,6 +19,7 @@ Ein kleines, dunkles Dashboard für `public.measurements` mit Live-Updates (INSE
    NEXT_PUBLIC_SUPABASE_URL=https://<PROJECT>.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=<ANON_KEY>
    ```
+   Fehlt eine der Variablen, schlägt der Build fehl.
 3. Dev-Server starten:
    ```bash
    npm run dev

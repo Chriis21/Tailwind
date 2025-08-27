@@ -1,18 +1,15 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
+import {
+  NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  NEXT_PUBLIC_SUPABASE_URL,
+} from './env'
 
 let cachedClient: SupabaseClient | null = null
 
 export function getSupabaseClient(): SupabaseClient {
   if (cachedClient) return cachedClient
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-
-  if (!supabaseUrl || !supabaseAnonKey) {
-    throw new Error('Supabase-Umgebungsvariablen fehlen. Bitte .env.local prüfen.')
-  }
-
-  cachedClient = createClient(supabaseUrl, supabaseAnonKey, {
+  cachedClient = createClient(NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, {
     auth: { persistSession: false },
   })
   return cachedClient
